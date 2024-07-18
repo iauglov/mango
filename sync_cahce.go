@@ -27,7 +27,7 @@ func (c *SyncMemCahce[K, V]) Put(key K, val V) {
 	c.cache[key] = val
 }
 
-func (c *SyncMemCahce[K, V]) Delete(key K, val V) {
+func (c *SyncMemCahce[K, V]) Delete(key K) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	delete(c.cache, key)
