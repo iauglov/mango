@@ -19,3 +19,12 @@ func MapWithErr[T, R any](collection []T, function func(T) (R, error)) ([]R, err
 	}
 	return result, nil
 }
+
+func ToMap[T, V any, K comparable](collection []T, function func(T) (K, V)) map[K]V {
+	result := map[K]V{}
+	for _, item := range collection {
+		k, v := function(item)
+		result[k] = v
+	}
+	return result
+}
